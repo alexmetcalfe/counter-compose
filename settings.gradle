@@ -1,0 +1,3 @@
+include ':wolfram'
+include ':app'
+rootProject.name = "Counter"
