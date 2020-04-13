@@ -44,13 +44,13 @@ fun FavouriteScreen() {
 fun FavouriteScreenBody() {
     VerticalScroller {
         Column {
-            AppState.favourites.forEachIndexed { index, favourite ->
+            AppState.favouritePrimes.forEachIndexed { index, favourite ->
                 Row(modifier = Modifier.fillMaxWidth()) {
                     ListItem(
                             text = { Text(text = "$favourite")},
                             trailing = {
                                 TextButton(onClick = {
-                                    AppState.favourites.removeAt(index)
+                                    AppState.favouritePrimes.removeAt(index)
                                 }) {
                                     Text(text = "Delete")
                                 }
@@ -66,6 +66,6 @@ fun FavouriteScreenBody() {
 @Preview
 @Composable
 fun FavouriteScreenPreview() {
-    AppState.favourites.addAll(0, listOf(3, 5, 7))
+    AppState.favouritePrimes.addAll(0, listOf(3, 5, 7))
     FavouriteScreen()
 }

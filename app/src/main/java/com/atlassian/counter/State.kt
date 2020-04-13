@@ -7,5 +7,5 @@ import androidx.compose.frames.modelListOf
 object AppState {
     var currentScreen: Screen = Screen.Home
     var counter: Int = 0
-    var favourites = modelListOf<Int>()
+    var favouritePrimes = modelListOf<Int>()
 }

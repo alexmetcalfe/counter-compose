@@ -113,16 +113,16 @@ private fun CounterScreenBody() {
 
                 if (isPrime(counter)) {
                     Column {
-                        if (AppState.favourites.contains(counter)) {
+                        if (AppState.favouritePrimes.contains(counter)) {
                             TextButton(onClick = {
-                                AppState.favourites.remove(counter)
+                                AppState.favouritePrimes.remove(counter)
                                 showIsPrimeDialog = false
                             }, modifier = Modifier.padding(8.dp)) {
                                 Text(text = "Remove from favourite primes")
                             }
                         } else {
                             TextButton(onClick = {
-                                AppState.favourites.add(counter)
+                                AppState.favouritePrimes.add(counter)
                                 showIsPrimeDialog = false
                             }, modifier = Modifier.padding(8.dp)) {
                                 Text(text = "Save to favourite primes")
