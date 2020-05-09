@@ -9,11 +9,16 @@ import androidx.ui.material.ScaffoldState
 import androidx.ui.material.TextButton
 import androidx.ui.material.TopAppBar
 import androidx.ui.tooling.preview.Preview
+import com.atlassian.counter.AppAction
+import com.atlassian.counter.AppState
 import com.atlassian.counter.Screen
+import com.atlassian.counter.appReducer
 import com.atlassian.counter.navigateTo
+import com.atlassian.counter.state.Store
 
 @Composable
 fun HomeScreen(
+        store: Store<AppState, AppAction>,
         scaffoldState: ScaffoldState = remember { ScaffoldState() }
 ) {
     Column {
@@ -23,22 +28,22 @@ fun HomeScreen(
                     TopAppBar(title = { Text("State management") })
                 },
                 bodyContent = {
-                    HomeScreenBody()
+                    HomeScreenBody(store)
                 }
         )
     }
 }
 
 @Composable
-private fun HomeScreenBody() {
+private fun HomeScreenBody(store: Store<AppState, AppAction>) {
     Column {
         TextButton(onClick = {
-            navigateTo(Screen.Counter)
+            navigateTo(store, Screen.Counter)
         }) {
             Text(text = "Counter demo")
         }
         TextButton(onClick = {
-            navigateTo(Screen.Favourite)
+            navigateTo(store, Screen.Favourite)
         }) {
             Text(text = "Favourite primes")
         }
@@ -48,5 +53,5 @@ private fun HomeScreenBody() {
 @Preview("Home Screen")
 @Composable
 fun PreviewHome() {
-    HomeScreen()
+    HomeScreen(Store(initialValue = AppState(), reducer = ::appReducer))
 }
